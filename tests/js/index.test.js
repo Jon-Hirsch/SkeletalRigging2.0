@@ -1,9 +1,11 @@
 import ReactDOM from 'react-dom';
 import initSkeletalRigging from '../../src/js/index';
+import CanvasManager from '../../src/js/canvasClasses/CanvasManager';
 import { initDispatch } from '../../src/js/dispatch';
 
 jest.mock('react-dom');
 jest.mock('../../src/js/dispatch');
+jest.mock('../../src/js/canvasClasses/CanvasManager');
 
 describe('initSkeletalRigging', () => {
   beforeEach(() => {
