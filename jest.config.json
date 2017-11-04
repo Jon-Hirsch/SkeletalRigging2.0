@@ -1,0 +1,10 @@
+{
+  "collectCoverageFrom": [
+    "src/js/**/*.js"
+  ],
+  "setupTestFrameworkScriptFile": "./tests/entry.js",
+  "coverageDirectory": "./coverage/",
+  "moduleNameMapper": {
+    "^.*\\.scss$": "<rootDir>/tests/SCSSStub.js"
+  }
+}

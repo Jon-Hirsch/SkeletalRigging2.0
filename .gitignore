@@ -1,0 +1,7 @@
+/node_modules
+/dist/bundle.js
+/dist/debug.log
+/coverage
+.idea
+.idea/workspace.xml
+yarn-error.log
