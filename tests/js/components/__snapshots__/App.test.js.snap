@@ -1,7 +1,29 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`App should match snapshot 1`] = `
-<div>
-  Hello World
-</div>
+<BoneControls
+  boneId="body"
+  bones={
+    Array [
+      Object {
+        "angle": "270",
+        "boneLength": "200",
+        "id": "blah",
+        "name": "anything",
+        "parent": "body",
+        "x": "300",
+        "y": "320",
+      },
+      Object {
+        "angle": "270",
+        "boneLength": "200",
+        "id": "body",
+        "name": "body",
+        "parent": null,
+        "x": "300",
+        "y": "320",
+      },
+    ]
+  }
+/>
 `;

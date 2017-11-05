@@ -1,6 +1,7 @@
 const circleRadius = 10;
 export default class Bone {
-  constructor(x, y, boneLength, angle, context) {
+  constructor(id, x, y, boneLength, angle, context) {
+    this.id = id;
     this.x = x;
     this.y = y;
     this.boneLength = boneLength;

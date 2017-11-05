@@ -1,4 +1,6 @@
 import Skeleton from './Skeleton';
+import dispatch from '../dispatch';
+import { radiansToDegrees } from './helpers';
 
 export default class CanvasManager {
   constructor(canvas, bones) {
@@ -43,8 +45,16 @@ export default class CanvasManager {
     if (this.currentDragBone) {
       this.currentDragBone.pointToward(x, y);
       this.draw();
+      dispatch({
+        type: 'UPDATE_BONE',
+        id: this.currentDragBone.id,
+        field: 'angle',
+        value: radiansToDegrees(this.currentDragBone.angle).toString()
+      });
     } else {
-      this.currentHoverBone = this.skeleton.bones.find(bone => bone.checkMouse(x, y));
+      this.currentHoverBone = this.skeleton.bones.find(bone =>
+        bone.checkMouse(x, y)
+      );
       this.canvas.style.cursor = this.currentHoverBone ? 'pointer' : 'default';
     }
   }

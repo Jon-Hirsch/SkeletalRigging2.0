@@ -14,8 +14,8 @@ describe('Bone', () => {
   describe('addChild', () => {
     let parentBone, childBone;
     beforeEach(() => {
-      parentBone = new Bone(300, 320, 200, 0.5, context);
-      childBone = new Bone(300, 320, 200, 0.5, context);
+      parentBone = new Bone(1, 300, 320, 200, 0.5, context);
+      childBone = new Bone(2, 300, 320, 200, 0.5, context);
     });
 
     test('addChild ands a bone to the children array', () => {
@@ -33,7 +33,7 @@ describe('Bone', () => {
     describe('when the bone has no parent', () => {
       let bone;
       beforeEach(() => {
-        bone = new Bone(10, 10, 10, degreesToRadians(90), context);
+        bone = new Bone(1, 10, 10, 10, degreesToRadians(90), context);
         bone.calculateCoordinates();
       });
 
@@ -55,8 +55,8 @@ describe('Bone', () => {
     describe('when the bone has a parent', () => {
       let childBone, parentBone;
       beforeEach(() => {
-        parentBone = new Bone(10, 10, 10, degreesToRadians(90), context);
-        childBone = new Bone(10, 10, 10, degreesToRadians(90), context);
+        parentBone = new Bone(1, 10, 10, 10, degreesToRadians(90), context);
+        childBone = new Bone(2, 10, 10, 10, degreesToRadians(90), context);
         parentBone.addChild(childBone);
         parentBone.calculateCoordinates();
         childBone.calculateCoordinates();
@@ -80,9 +80,9 @@ describe('Bone', () => {
 
     describe('when the bone has children', () => {
       test('calls calculateCoordinates for each child', () => {
-        const parentBone = new Bone(10, 10, 10, degreesToRadians(90), context);
-        const child1 = new Bone(10, 10, 10, degreesToRadians(90), context);
-        const child2 = new Bone(10, 10, 10, degreesToRadians(90), context);
+        const parentBone = new Bone(1, 10, 10, 10, degreesToRadians(90), context);
+        const child1 = new Bone(2, 10, 10, 10, degreesToRadians(90), context);
+        const child2 = new Bone(3, 10, 10, 10, degreesToRadians(90), context);
         child1.calculateCoordinates = jest.fn();
         child2.calculateCoordinates = jest.fn();
         parentBone.addChild(child1);
@@ -96,9 +96,9 @@ describe('Bone', () => {
 
   describe('draw', () => {
     test('calls draw for each child', () => {
-      const parentBone = new Bone(10, 10, 10, degreesToRadians(90), context);
-      const child1 = new Bone(10, 10, 10, degreesToRadians(90), context);
-      const child2 = new Bone(10, 10, 10, degreesToRadians(90), context);
+      const parentBone = new Bone(1, 10, 10, 10, degreesToRadians(90), context);
+      const child1 = new Bone(2, 10, 10, 10, degreesToRadians(90), context);
+      const child2 = new Bone(3, 10, 10, 10, degreesToRadians(90), context);
       child1.draw = jest.fn();
       child2.draw = jest.fn();
       parentBone.addChild(child1);
@@ -111,7 +111,7 @@ describe('Bone', () => {
 
   describe('pointToward', () => {
     test('points a bone towards a set of coordinates', () => {
-      const bone = new Bone(10, 10, 10, 0, context);
+      const bone = new Bone(1, 10, 10, 10, 0, context);
       bone.pointToward(10, 50);
       expect(bone.absoluteAngle).toEqual(degreesToRadians(90));
       expect(bone.endX).toEqual(10);
@@ -119,8 +119,8 @@ describe('Bone', () => {
     });
 
     test('correctly adjusts the calculations if the bone has a parent', () => {
-      const parentBone = new Bone(10, 10, 10, degreesToRadians(90), context);
-      const childBone = new Bone(0, 0, 10, degreesToRadians(90), context);
+      const parentBone = new Bone(1, 10, 10, 10, degreesToRadians(90), context);
+      const childBone = new Bone(2, 0, 0, 10, degreesToRadians(90), context);
       parentBone.addChild(childBone);
       parentBone.calculateCoordinates();
       childBone.pointToward(10, 50);
@@ -132,12 +132,12 @@ describe('Bone', () => {
 
   describe('checkMouse', () => {
     test('returns true if the given coordinates are within the radius of the bones click point', () => {
-      const bone = new Bone(10, 10, 10, 0, context);
+      const bone = new Bone(1, 10, 10, 10, 0, context);
       expect(bone.checkMouse(20, 10)).toEqual(true);
     });
 
     test('returns true if the given coordinates are within the radius of the bones click point', () => {
-      const bone = new Bone(10, 10, 10, 0, context);
+      const bone = new Bone(1, 10, 10, 10, 0, context);
       expect(bone.checkMouse(0, 10)).toEqual(false);
     });
   });

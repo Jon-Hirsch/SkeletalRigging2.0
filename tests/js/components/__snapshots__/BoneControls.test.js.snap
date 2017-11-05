@@ -1,0 +1,223 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BoneControls should match snapshot 1`] = `
+<div
+  className="skeletal-rigging-bone-controls"
+>
+  <div
+    className="bone-controls"
+  >
+    <div>
+      name:
+       
+      <input
+        className="bone-name-input"
+        onChange={[Function]}
+        type="text"
+        value="body"
+      />
+      x:
+       
+      <input
+        className="bone-x-input"
+        onChange={[Function]}
+        type="text"
+        value="300"
+      />
+      y:
+       
+      <input
+        className="bone-y-input"
+        onChange={[Function]}
+        type="text"
+        value="320"
+      />
+      length:
+       
+      <input
+        className="bone-length-input"
+        onChange={[Function]}
+        type="text"
+        value="200"
+      />
+      angle:
+       
+      <input
+        className="bone-angle-input"
+        onChange={[Function]}
+        type="text"
+        value="270"
+      />
+      <button
+        className="add-bone-button"
+        onClick={[Function]}
+      >
+        Add Bone
+      </button>
+      <button
+        className="remove-bone-button"
+        onClick={[Function]}
+      >
+        Remove Bone
+      </button>
+    </div>
+    <div />
+  </div>
+  <BoneControls
+    boneId="child1"
+    bones={
+      Array [
+        Object {
+          "angle": "270",
+          "boneLength": "200",
+          "id": "baseBone",
+          "name": "baseBone",
+          "parent": null,
+          "x": "300",
+          "y": "320",
+        },
+        Object {
+          "angle": "270",
+          "boneLength": "200",
+          "id": "body",
+          "name": "body",
+          "parent": "baseBone",
+          "x": "300",
+          "y": "320",
+        },
+        Object {
+          "angle": "270",
+          "boneLength": "200",
+          "id": "child1",
+          "name": "child1",
+          "parent": "body",
+          "x": "300",
+          "y": "320",
+        },
+        Object {
+          "angle": "270",
+          "boneLength": "200",
+          "id": "child1",
+          "name": "child1",
+          "parent": "body",
+          "x": "300",
+          "y": "320",
+        },
+        Object {
+          "angle": "270",
+          "boneLength": "200",
+          "id": "child1",
+          "name": "child1",
+          "parent": "body",
+          "x": "300",
+          "y": "320",
+        },
+      ]
+    }
+  />
+  <BoneControls
+    boneId="child1"
+    bones={
+      Array [
+        Object {
+          "angle": "270",
+          "boneLength": "200",
+          "id": "baseBone",
+          "name": "baseBone",
+          "parent": null,
+          "x": "300",
+          "y": "320",
+        },
+        Object {
+          "angle": "270",
+          "boneLength": "200",
+          "id": "body",
+          "name": "body",
+          "parent": "baseBone",
+          "x": "300",
+          "y": "320",
+        },
+        Object {
+          "angle": "270",
+          "boneLength": "200",
+          "id": "child1",
+          "name": "child1",
+          "parent": "body",
+          "x": "300",
+          "y": "320",
+        },
+        Object {
+          "angle": "270",
+          "boneLength": "200",
+          "id": "child1",
+          "name": "child1",
+          "parent": "body",
+          "x": "300",
+          "y": "320",
+        },
+        Object {
+          "angle": "270",
+          "boneLength": "200",
+          "id": "child1",
+          "name": "child1",
+          "parent": "body",
+          "x": "300",
+          "y": "320",
+        },
+      ]
+    }
+  />
+  <BoneControls
+    boneId="child1"
+    bones={
+      Array [
+        Object {
+          "angle": "270",
+          "boneLength": "200",
+          "id": "baseBone",
+          "name": "baseBone",
+          "parent": null,
+          "x": "300",
+          "y": "320",
+        },
+        Object {
+          "angle": "270",
+          "boneLength": "200",
+          "id": "body",
+          "name": "body",
+          "parent": "baseBone",
+          "x": "300",
+          "y": "320",
+        },
+        Object {
+          "angle": "270",
+          "boneLength": "200",
+          "id": "child1",
+          "name": "child1",
+          "parent": "body",
+          "x": "300",
+          "y": "320",
+        },
+        Object {
+          "angle": "270",
+          "boneLength": "200",
+          "id": "child1",
+          "name": "child1",
+          "parent": "body",
+          "x": "300",
+          "y": "320",
+        },
+        Object {
+          "angle": "270",
+          "boneLength": "200",
+          "id": "child1",
+          "name": "child1",
+          "parent": "body",
+          "x": "300",
+          "y": "320",
+        },
+      ]
+    }
+  />
+</div>
+`;

@@ -1,5 +1,8 @@
 import CanvasManager from '../../../src/js/canvasClasses/CanvasManager';
+import dispatch from '../../../src/js/dispatch';
 import { defaultState } from '../../../src/js/reducers/rootReducer';
+
+jest.mock('../../../src/js/dispatch');
 
 const context = {
   beginPath: jest.fn(),
@@ -19,6 +22,10 @@ const canvas = {
 };
 
 describe('CanvasManager', () => {
+  beforeEach(() => {
+    dispatch.mockClear();
+  });
+
   describe('draw', () => {
     test('clears the canvas', () => {
       const canvasManager = new CanvasManager(canvas, defaultState.bones);
@@ -57,17 +64,35 @@ describe('CanvasManager', () => {
       let canvasManager;
       beforeEach(() => {
         canvasManager = new CanvasManager(canvas, defaultState.bones);
-        canvasManager.currentDragBone = { pointToward: jest.fn() };
+        canvasManager.currentDragBone = {
+          pointToward: jest.fn(),
+          id: '1',
+          angle: 0
+        };
       });
+
       test('it calls the bones pointToward method with the mouse coordinates relative to the canvas', () => {
         canvasManager.handleMouseMove({ clientX: 20, clientY: 20 });
-        expect(canvasManager.currentDragBone.pointToward).toHaveBeenCalledWith(10, 10);
+        expect(canvasManager.currentDragBone.pointToward).toHaveBeenCalledWith(
+          10,
+          10
+        );
       });
 
       test('it calls draw', () => {
         canvasManager.draw = jest.fn();
         canvasManager.handleMouseMove({ clientX: 20, clientY: 20 });
         expect(canvasManager.draw).toHaveBeenCalled();
+      });
+
+      test('it calls dispatch with UPDATE_BONE', () => {
+        canvasManager.handleMouseMove({ clientX: 20, clientY: 20 });
+        expect(dispatch).toHaveBeenCalledWith({
+          type: 'UPDATE_BONE',
+          id: '1',
+          field: 'angle',
+          value: '0'
+        });
       });
     });
 
@@ -81,7 +106,9 @@ describe('CanvasManager', () => {
         canvasManager.skeleton.bones[1].endX = 10;
         canvasManager.skeleton.bones[1].endY = 10;
         canvasManager.handleMouseMove({ clientX: 20, clientY: 20 });
-        expect(canvasManager.currentHoverBone).toEqual(canvasManager.skeleton.bones[1]);
+        expect(canvasManager.currentHoverBone).toEqual(
+          canvasManager.skeleton.bones[1]
+        );
       });
 
       test('it sets the canvas cursor style to pointer if a hover bone is found', () => {

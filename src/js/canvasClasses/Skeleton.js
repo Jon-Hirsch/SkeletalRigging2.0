@@ -17,7 +17,7 @@ export default class Skeleton {
     const y = isNaN(boneToAdd.y) ? 0 : +boneToAdd.y;
     const boneLength = isNaN(boneToAdd.boneLength) ? 0 : +boneToAdd.boneLength;
     const angle = isNaN(boneToAdd.angle) ? 0 : degreesToRadians(boneToAdd.angle);
-    const newBone = new Bone(x, y, boneLength, angle, this.context);
+    const newBone = new Bone(boneToAdd.id, x, y, boneLength, angle, this.context);
 
     this.bones.push(newBone);
     if (parentBone) parentBone.addChild(newBone);

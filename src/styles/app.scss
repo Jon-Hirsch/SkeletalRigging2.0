@@ -1,0 +1,29 @@
+.skeletal-rigging-bone-controls {
+  max-width: 850px;
+  border: solid 1px;
+  padding: 10px;
+  margin: 10px 10px 10px 25px;
+  border-radius: 4px;
+  font-size: 16px;
+  .bone-controls {
+    display: flex;
+    justify-content: space-between;
+    input {
+      width: 35px;
+      margin: 5px;
+    }
+
+    .bone-name-input {
+      width: 90px;
+    }
+  }
+
+  .remove-bone-button {
+    background-color: #f40;
+  }
+
+  .add-bone-button {
+    background-color: limegreen;
+  }
+
+}
