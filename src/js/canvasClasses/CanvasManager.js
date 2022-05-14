@@ -6,10 +6,11 @@ export default class CanvasManager {
   constructor(canvas, bones) {
     this.canvas = canvas;
     this.context = canvas.getContext('2d');
+    const scale = canvas.width / 600; // default width is 600px, but can scale down to fit window
     this.skeleton = null;
     this.currentHoverBone = null;
     this.currentDragBone = null;
-    this.generateSkeleton(bones);
+    this.generateSkeleton(bones, scale);
 
     this.handleMouseDown = this.handleMouseDown.bind(this);
     this.handleMouseUp = this.handleMouseUp.bind(this);
@@ -26,8 +27,8 @@ export default class CanvasManager {
     this.canvas.addEventListener('touchcancel', this.handleMouseUp);
   }
 
-  generateSkeleton(bones) {
-    this.skeleton = new Skeleton(bones, this.context);
+  generateSkeleton(bones, scale) {
+    this.skeleton = new Skeleton(bones, this.context, scale);
   }
 
   draw() {
@@ -38,9 +39,7 @@ export default class CanvasManager {
   handleMouseDown(event) {
     const { x, y } = this.getEventCoordinates(event);
 
-    this.currentDragBone = this.skeleton.bones.find((bone) =>
-      bone.checkMouse(x, y)
-    );
+    this.currentDragBone = this.skeleton.bones.find((bone) => bone.checkMouse(x, y));
   }
 
   handleMouseUp() {
@@ -61,9 +60,7 @@ export default class CanvasManager {
         value: radiansToDegrees(this.currentDragBone.angle).toString(),
       });
     } else {
-      this.currentHoverBone = this.skeleton.bones.find((bone) =>
-        bone.checkMouse(x, y)
-      );
+      this.currentHoverBone = this.skeleton.bones.find((bone) => bone.checkMouse(x, y));
       this.canvas.style.cursor = this.currentHoverBone ? 'pointer' : 'default';
     }
   }
